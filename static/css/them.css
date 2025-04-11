@@ -1,0 +1,20 @@
+a{
+  color: black;
+}
+a:hover{
+  color: red;
+}
+
+/* rating thankyou.php và review.php */
+
+
+.starkq {
+  font-size: 20px;
+  color: #ffd700;
+  /* Màu vàng */
+}
+
+.starkq.empty {
+  color: #ccc;
+  /* Màu xám cho sao rỗng */
+}

@@ -1,0 +1,200 @@
+{% include "header.html" %}
+
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <div class="section-title">
+                <h2>Loại sản phẩm</h2>
+            </div>
+
+            <div class="categories__slider owl-carousel">
+                <!-- <?php
+                $sql_str = "select*from categories order by name";
+                $result = mysqli_query($conn, $sql_str);
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                    ?>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="img/categories/1.webp">
+                            <h5><a href="shop.php?slug=<?= $row['slug'] ?>#products"><?= $row['name'] ?></a></h5>
+                        </div>
+                    </div>
+                <?php } ?> -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+
+<!-- Featured Section Begin -->
+<section class="featured spad">
+    <div class="container">
+        <script src="{{url_for('static', filename='js/mixitup.min.js')}}"></script>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Sản phẩm đặc trưng</h2>
+                </div>
+                <div class="featured__controls">
+                    <ul>
+                        <li class="active" data-filter="*">All</li>
+                        <!-- <?php
+                        $sql_str = "SELECT*from categories order by name";
+                        $result = mysqli_query($conn, $sql_str);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                            <li data-filter=".<?= $row['slug'] ?>"><?= $row['name'] ?></li>
+                        <?php } ?> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row featured__filter">
+            <!-- <?php
+            $sql_str = "SELECT products.id as id, products.name as pname, images, price, disscounted_price, categories.slug as cslug from products, categories where products.category_id=categories.id limit 0,8";
+            $result = mysqli_query($conn, $sql_str);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $anh_arr = explode(';', $row['images']);
+                ?>
+                <div class="col-lg-3 col-md-4 col-sm-6 mix <?= $row['cslug'] ?>">
+                    <div class="featured__item">
+                        <a href="product_details.php?id=<?= $row['id'] ?>">
+                            <div class="featured__item__pic set-bg" data-setbg="<?= "quantri/" . $anh_arr[0] ?>"></div>
+                            <div class="featured__item__text">
+                                <h6><?= $row['pname'] ?></h6>
+                                <b>
+                                    <?= number_format($row['disscounted_price'], 0, '', '.') ?> VNĐ
+                                </b>
+                                <span
+                                    style="text-decoration: line-through; color: gray; align-content: center; margin-left: 10px; font-size: small;">
+                                    <?= number_format($row['price'], 0, '', '.') ?>VNĐ
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            <?php } ?> -->
+        </div>
+        <a href="shop.php" class="btn btn-outline-success">READ MORE</a>
+    </div>
+</section>
+<!-- Featured Section End -->
+
+<!-- Banner Begin -->
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="{{url_for('static', filename='img/banner/banner (1).png')}}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="{{url_for('static', filename='img/banner/banner (2).png')}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
+
+<!-- Latest Product Section Begin -->
+<section class="latest-product spad">
+    <div class="container">
+        <div class="product__discount">
+            <div class="section-title product__discount__title">
+                <h2>Sản phẩm mới nhất</h2>
+            </div>
+            <div class="row">
+                <div class="product__discount__slider owl-carousel">
+                    <!-- <?php
+                    $sql_str = "SELECT products.id as id, products.name as pname, categories.name as cname,
+                    images, price,disscounted_price, products.created_at 
+                                FROM `products`, `categories`
+                                where products.category_id=categories.id order by created_at desc limit 0,6";
+                    $result = mysqli_query($conn, $sql_str);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $anh_arr = explode(';', $row['images']);
+                        ?>
+                        <div class="col-lg-4">
+                            <div class="product__discount__item">
+                                </a>
+                                <div class="product__discount__item__pic set-bg"
+                                    data-setbg="<?= "quantri/" . $anh_arr[0] ?>">
+                                </div>
+                                <div class="product__discount__item__text">
+                                    <a href="product_details.php?id=<?= $row['id'] ?>">
+                                        <span><?= $row['cname'] ?></span>
+                                        <h5><?= $row['pname'] ?></h5>
+                                        <div class="product__item__price">
+                                            <?= number_format($row['disscounted_price'], 0, '', '.') ?> VNĐ
+                                            <span
+                                                style="text-decoration: line-through; color: gray; align-content: center; margin-left: 10px; font-size: small;">
+                                                <?= number_format($row['price'], 0, '', '.') ?>VNĐ
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php } ?> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Latest Product Section End -->
+
+<!-- Blog Section Begin -->
+<section class="from-blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title from-blog__title">
+                    <h2>From The Blog</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- <?php
+            $sql_str = "select*from blog_news order by created_at desc limit 0,3";
+            $result = mysqli_query($conn, $sql_str);
+            while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <a href="tintuc.php?id=<?= $row['id'] ?>">
+                            <div class="blog__item__pic">
+                                <img src="<?= "quantri/" . $row['avatar'] ?>" alt="">
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-calendar-o"></i><?= $row['created_at'] ?></li>
+                                    <li><i class="fa fa-comment-o"></i> 5</li>
+                                </ul>
+                                <h5><?= $row['title'] ?></h5>
+                                <p><?= $row['sumary'] ?></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            <?php } ?> -->
+        </div>
+    </div>
+</section>
+<script>
+    // Khởi tạo MixItUp
+    var mixer = mixitup('.featured__filter', {
+        selectors: {
+            target: '.col-lg-3'  // Mục tiêu cho các phần tử sản phẩm
+        },
+        load: {
+            filter: '*'  // Hiển thị tất cả sản phẩm ban đầu
+        }
+    });
+</script>
+<!-- Blog Section End -->
+{% include "footer.html" %}

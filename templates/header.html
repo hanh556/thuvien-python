@@ -1,0 +1,362 @@
+<!-- <?php
+
+require('./db/conn.php');
+
+if (isset($_SESSION['user_id']['type']) && ($_SESSION['user_id']['type'] === 'Admin' or $_SESSION['user_id']['type'] === 'Staff')) {
+  header("location: quantri./login.php");
+  exit;
+}
+?> -->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Ogani Template">
+  <meta name="keywords" content="Ogani, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DREAM | Template</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/font-awesome.min.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/elegant-icons.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/jquery-ui.min.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/slicknav.min.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/them.css')}}" type="text/css">
+  
+  <style>
+    .logo h2 {
+      color: green;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+  <!-- Humberger Begin -->
+  <div class="humberger__menu__overlay"></div>
+  <div class="humberger__menu__wrapper">
+    <div class="humberger__menu__logo">
+      <a href="index.html" class="logo">DREAM</a>
+    </div>
+    <div class="humberger__menu__cart">
+      <ul>
+        <li><a href="{{ url_for('trangluu') }}"><i class="fa fa-shopping-bag"></i> <span>
+              <!-- <?php
+              $count = 0;
+              $tongtien = 0;
+              if (isset($_SESSION['user_id'])) {
+                $cart = [];
+                $arr = $_SESSION['user_id'];
+                $sql_str = "SELECT * from cart where user_id = {$arr['id']}";
+                $result = mysqli_query($conn, $sql_str);
+                while ($row = mysqli_fetch_assoc($result)) {
+                  $cart[] = $row;
+                  $count++;
+                }
+                foreach ($cart as $item) {
+                  $tongtien += $item['qty'] * $item['disscounted_price'];
+                }
+              }
+
+              // hien thi so luong
+              echo $count;
+              ?> -->
+            </span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="humberger__menu__widget">
+    <div class="header__top__right__auth">
+      <!-- <?php
+        if (!isset($_SESSION['user_id'])) {
+          ?>
+          <a href="quantri./login.php"><i class="fa fa-user"></i> Đăng nhập</a>
+          <?php
+        } else {
+          ?>
+          <div class="dropdown open">
+            <a class="btn dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <?php
+              $arr = $_SESSION['user_id'];
+              ?>
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ username }}</span>
+              <img class="img-profile rounded-circle" src="<?= "./img/user.jpg" ?>" width="25px">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="triggerId">
+              <a class="dropdown-item" href="trangcanhan.php">
+                Trang cá nhân
+              </a>
+              <a class="dropdown-item" href="order.php">
+                Đã mua
+              </a>
+              <a class="dropdown-item" href="quantri./logout.php"
+                onclick="return confirm('Bạn chắc chắn muốn đăng xuất?');">
+                Đăng xuất
+              </a>
+            </div>
+          </div>
+        <?php } ?> -->
+    </div>
+  </div>
+  <nav class="humberger__menu__nav mobile-menu">
+    <ul>
+      <li class="active"><a href="{{ url_for('home') }}">Home</a> </li>
+      <li><a href="{{ url_for('trangluu') }}">Trang lưu</a></li>
+    </ul>
+  </nav>
+  <div id="mobile-menu-wrap"></div>
+  <div class="header__top__right__social">
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-linkedin"></i></a>
+    <a href="#"><i class="fa fa-pinterest-p"></i></a>
+  </div>
+  <div class="humberger__menu__contact">
+    <ul>
+      <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+      <li>Miễn phí ship cho tất cả các đơn hàng trên 99.000đ</li>
+    </ul>
+  </div>
+  </div>
+  <!-- Humberger End -->
+
+  <!-- Header Section Begin -->
+  <header class="header">
+    <div class="header__top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="header__top__left">
+              <ul>
+                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <li>Miễn phí ship cho tất cả các đơn hàng trên 99.000đ</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="header__top__right">
+              <div class="header__top__right__social">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+              </div>
+              <div class="header__top__right__auth">
+                <!-- <?php
+                if (!isset($_SESSION['user_id'])) {
+                  ?>
+                  <a href="quantri./login.php"><i class="fa fa-user"></i> Đăng nhập</a>
+                  <?php
+                } else {
+                  ?>
+                  <div class="dropdown open">
+                    <a class="btn dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <?php
+                      $arr = $_SESSION['user_id'];
+                      ?>
+                      <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ username }}</span>
+                      <img class="img-profile rounded-circle" src="<?= "./img/user.jpg" ?>" width="25px">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="triggerId">
+                      <a class="dropdown-item" href="trangcanhan.php">
+                        <a class="dropdown-item" href="trangcanhan.php">
+                          Trang cá nhân
+                        </a>
+                        <a class="dropdown-item" href="order.php">
+                          Đã mua
+                        </a>
+                        <a class="dropdown-item" href="quantri./logout.php"
+                          onclick="return confirm('Bạn chắc chắn muốn đăng xuất?');">
+                          Đăng xuất
+                        </a>
+                    </div>
+                  </div>
+                <?php } ?> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="header__logo">
+            <a href="index.html" class="logo">
+              <h2>DREAM</h2>
+            </a>
+          </div>
+        </div>
+
+        <div class="overlay"></div>
+        <div class="col-lg-6">
+          <nav class="header__menu">
+            <ul>
+              <li class="active"><a href="index.html">Home</a></li>
+              <li><a href="{{ url_for('trangluu') }}">Trang lưu</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-lg-3">
+          <div class="header__cart">
+            <ul>
+              <li><a href="{{ url_for('trangluu') }}"><i class="fa fa-shopping-bag"></i> <span>
+                    <!-- <?php
+                    require('./db/conn.php');
+                    $tongtien = 0;
+                    $count = 0;
+                    $arr = $_SESSION['user_id'];
+                    if (isset($_SESSION['user_id'])) {
+                      $cart = [];
+                      $sql_str = "SELECT * from cart where user_id = {$arr['id']}";
+                      $result = mysqli_query($conn, $sql_str);
+                      while ($row = mysqli_fetch_assoc($result)) {
+                        $cart[] = $row;
+                      }
+                      foreach ($cart as $item) {
+                        $tongtien += $item['qty'] * $item['disscounted_price'];
+                      }
+                      $count = count($cart);
+                    }
+                    // hien thi so luong
+                    echo $count;
+                    ?> -->
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <!-- <div class="header__cart__price">Tổng tiền: <span><?= number_format($tongtien, 0, '', '.') ?> VNĐ</span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="humberger__open">
+      <i class="fa fa-bars"></i>
+    </div>
+    </div>
+  </header>
+  <!-- Header Section End -->
+
+  <!-- Hero Section Begin -->
+  <!-- <?php
+  if ($is_homepage) {
+    echo '<section class="hero">';
+  } else {
+    echo '<section class="hero hero-normal">';
+  }
+  ?> -->
+  <section class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="hero__categories">
+            <div class="hero__categories__all">
+              <i class="fa fa-bars"></i>
+              <span>Loại sản phẩm</span>
+            </div>
+            <ul>
+              <!-- <?php
+            $sql_str = "select*from categories order by name";
+            $result = mysqli_query($conn, $sql_str);
+            while ($row = mysqli_fetch_assoc($result)) {
+              ?>
+              <li><a href="shop.php?slug=<?= $row['slug'] ?>#products"><?= $row['name'] ?></a></li>
+            <?php } ?> -->
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="hero__search">
+            <div class="hero__search__form">
+              <form action="timkiem.html" method="get">
+                <div class="hero__search__categories">
+                  <style>
+                    .he {
+                      display: block !important;
+                      padding: 8px 25px 0 10px;
+                      margin-top: -8px;
+                      margin-left: -15px;
+                      border: none;
+                      background: none;
+                    }
+
+                    /* Khi màn hình có chiều rộng nhỏ hơn 768px */
+                    @media screen and (max-width: 1200px) {
+                      .he {
+                        padding: 8px 3px 0 0px;
+                        margin-left: -15px;
+                        margin-top: -8px;
+                      }
+                    }
+                  </style>
+                  <select name="danhmuc" id="" class="he">
+                    <option value="0">Tất cả loại sản phẩm</option>
+                    <!-- <?php
+                  $sql_str = "select*from categories order by name";
+                  $result = mysqli_query($conn, $sql_str);
+                  while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+                  <?php } ?> -->
+                  </select>
+                </div>
+                <input type="text" name="tukhoa" placeholder="Bạn cần tìm gì?">
+                <button type="submit" class="site-btn">TÌM</button>
+              </form>
+            </div>
+            <div class="hero__search__phone">
+              <div class="hero__search__phone__icon">
+                <i class="fa fa-phone"></i>
+              </div>
+              <div class="hero__search__phone__text">
+                <h5>+65 11.188.888</h5>
+                <span>Hỗ trợ 24/7</span>
+              </div>
+            </div>
+          </div>
+          <!-- <?php
+        if ($is_homepage) {
+          ?>
+          <div class="hero__item set-bg" data-setbg="img/banner1.jpg">
+            <div class="hero__text">
+              <span>Văn phòng phẩm</span>
+              <h2 style="color: white;">DREAM <br />& STORY</h2>
+              <p style="color: white;">Chất lượng tạo nên thương hiệu</p>
+              <a href="#" class="primary-btn">Mua ngay</a>
+            </div>
+          </div>
+          <?php
+        }
+        ?> -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Section End -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
